@@ -2,12 +2,10 @@
   width: 354px;
   background-color: #ffffff;
   border-radius: 10px;
-  height: 500px;
 }
 
 .item {
   padding: 20px;
-  position: relative;
 }
 
 .item:not(:first-child) {
