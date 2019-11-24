@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import FormRegistration from "./Components/FormToFill/FormRegistration";
-import CompletedForm from "./Components/CompletedForm/CompletedForm";
+import FormRegistration from './Components/FormToFill/FormRegistration';
+import CompletedForm from './Components/CompletedForm/CompletedForm';
 import {connect} from 'react-redux';
-import {getDataForm, getIsAccount, getIsFormValid} from "./State/Form-Reselect";
+import {getDataForm, getIsAccount, getIsFormValid} from './State/Form-Reselect';
 import {
   isAccountCreated,
   isFormValidCheck,
@@ -12,7 +12,7 @@ import {
   setDataFormName,
   setDataFormPassword,
   setDataFormPhone
-} from "./State/Form-Reducer";
+} from './State/Form-Reducer';
 
 const App = (props) => {
   return (
