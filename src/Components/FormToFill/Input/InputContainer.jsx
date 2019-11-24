@@ -11,8 +11,10 @@ const InputContainer = ({
 }) => {
 
   const [errorMessage, setErrorMessage] = useState('');
-
-  const setValues = useCallback((e) => {
+	const hFor = `${title}-${Math.random()}`;
+	
+	
+	const setValues = useCallback((e) => {
     let value = e.currentTarget.value;
     setData(value);
     switch (e.currentTarget.name) {
@@ -36,7 +38,6 @@ const InputContainer = ({
     }
   }, [setData]);
   
-  const hFor = `${title}-${Math.random()}`;
 	
 	return (
 		<Input
