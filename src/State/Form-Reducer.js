@@ -21,22 +21,22 @@ const formReducer = (state = initialState, action) => {
     case SET_DATAFORM_NAME:
       return {
         ...state, dataForm: state.dataForm.map(n => {
-          if ('name' === action.field) return {...n, name: action.text};
-          if ('email' === action.field) return {...n, email: action.text};
-          if ('password' === action.field)  return {...n, password: action.text};
-          if ('Date of Birth' === action.field) return {...n, dateOfBirth: action.text};
-          if ('Phone number' === action.field)  return {...n, phone: action.text};
+          if ('name' === action.field) return {...n, 'name': action.text};
+          if ('email' === action.field) return {...n, 'email': action.text};
+          if ('password' === action.field)  return {...n, 'password': action.text};
+          if ('Date of Birth' === action.field) return {...n, 'Date of Birth': action.text};
+          if ('Phone number' === action.field)  return {...n, 'Phone number': action.text};
           else {return {...n}}
         })
       };
     case SET_IS_FORM_VALID: {
       return {
         ...state, isFormValid: state.isFormValid.map(n => {
-          if ('name' === action.field) return {...n, name: action.isValid};
-          if ('email' === action.field) return {...n, email: action.isValid};
-          if ('password' === action.field)  return {...n, password: action.isValid};
-          if ('Date of Birth' === action.field) return {...n, dateOfBirth: action.isValid};
-          if ('Phone number' === action.field)  return {...n, phone: action.isValid};
+          if ('name' === action.field) return {...n, 'name': action.isValid};
+          if ('email' === action.field) return {...n, 'email': action.isValid};
+          if ('password' === action.field)  return {...n, 'password': action.isValid};
+          if ('Date of Birth' === action.field) return {...n, 'Date of Birth': action.isValid};
+          if ('Phone number' === action.field)  return {...n, 'Phone number': action.isValid};
           else {return {...n}}
         })
       };

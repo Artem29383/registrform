@@ -59,10 +59,10 @@ const FormRegistration = ({
       <InputContainer
         title='Date of Birth'
         typeOfInput="text"
-        values={dataForm.dateOfBirth}
+        values={dataForm['Date of Birth']}
         setData={setDataFormName}
         isFormValidCheck={isFormValidCheck}
-        isFormValid={isFormValid[0].dateOfBirth}
+        isFormValid={isFormValid[0]['Date of Birth']}
       />
       <InputContainer
         title='Phone number'
@@ -70,7 +70,7 @@ const FormRegistration = ({
         values={dataForm.phone}
         setData={setDataFormName}
         isFormValidCheck={isFormValidCheck}
-        isFormValid={isFormValid[0].phone}
+        isFormValid={isFormValid[0]['Phone number']}
       />
       <div className={classes.item}>
         <button
