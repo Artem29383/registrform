@@ -1,29 +1,16 @@
 import React from 'react';
 import classes from './CompletedForm.module.css';
+import CompletedElement from "./CompletedElement";
 
 const CompletedForm = ({dataForm}) => {
+  const Naming = ['Name', 'Email', 'Password', 'Date of Birth', 'Phone number'];
+  let inputs = Object.values(dataForm).map((i, index) => {
+    return <CompletedElement key={index} i = {i} index = {index} Naming={Naming}/>
+  });
+  
 	return (
 		<form className={classes.completedForm}>
-			<div className={classes.item}>
-				<span className={classes.naming}>Name:</span>
-				<span className={classes.field}>{dataForm.name}</span>
-			</div>
-			<div className={classes.item}>
-				<span className={classes.naming}>Email:</span>
-				<span className={classes.field}>{dataForm.email}</span>
-			</div>
-			<div className={classes.item}>
-				<span className={classes.naming}>Password:</span>
-				<span className={classes.field}>{dataForm.password}</span>
-			</div>
-			<div className={classes.item}>
-				<span className={classes.naming}>Date of Birth:</span>
-				<span className={classes.field}>{dataForm.dateOfBirth}</span>
-			</div>
-			<div className={classes.item}>
-				<span className={classes.naming}>Phone number:</span>
-				<span className={classes.field}>{dataForm.phone}</span>
-			</div>
+			{inputs}
 		</form>
 	)
 };

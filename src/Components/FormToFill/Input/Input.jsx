@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React  from 'react';
 import classes from '../FormRegistration.module.css';
 import classNames from 'classnames';
 
@@ -8,17 +8,8 @@ const Input = ({
   values,
   setValue,
   errorMessage,
-  hFor,
-  isFormValidCheck
+  hFor
 }) => {
-  
-  useEffect(() => {
-    if (errorMessage) {
-      isFormValidCheck(false, title.toLocaleLowerCase());
-    } else {
-      isFormValidCheck(true, title.toLocaleLowerCase())
-    }
-  }, [errorMessage, isFormValidCheck, title]);
   
   return (
     <div className={classes.item}>
@@ -34,7 +25,7 @@ const Input = ({
         type={typeOfInput}
         value={values}
         onChange={setValue}
-        maxLength='25'
+        maxLength='40'
       />
       <span className={classes.errorMessage}>{errorMessage}</span>
     </div>

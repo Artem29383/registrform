@@ -7,11 +7,7 @@ import {getDataForm, getIsAccount, getIsFormValid} from './State/Form-Reselect';
 import {
   isAccountCreated,
   isFormValidCheck,
-  setDataFormBirth,
-  setDataFormEmail,
   setDataFormName,
-  setDataFormPassword,
-  setDataFormPhone
 } from './State/Form-Reducer';
 
 const App = (props) => {
@@ -20,10 +16,6 @@ const App = (props) => {
       <FormRegistration
         dataForm={props.dataForm[0]}
         setDataFormName={props.setDataFormName}
-        setDataFormEmail = {props.setDataFormEmail}
-        setDataFormPassword={props.setDataFormPassword}
-        setDataFormBirth={props.setDataFormBirth}
-        setDataFormPhone={props.setDataFormPhone}
         isFormValidCheck = {props.isFormValidCheck}
         isFormValid = {props.isFormValid}
         isAccountCreated = {props.isAccountCreated}
@@ -44,10 +36,6 @@ const mapStateToProps = state => {
 
 export default connect(mapStateToProps, {
   setDataFormName,
-  setDataFormEmail,
-  setDataFormPassword,
-  setDataFormBirth,
-  setDataFormPhone,
   isFormValidCheck,
   isAccountCreated
 })(App);

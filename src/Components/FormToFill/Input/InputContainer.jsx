@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import Input from './Input';
 import {isValidDate, isValidEmail, isValidName, isValidPassword, isValidPhone} from '../../../Utils/validators';
 
@@ -7,37 +7,38 @@ const InputContainer = ({
   typeOfInput,
   values,
   setData,
-  isFormValidCheck
+  isFormValidCheck,
+  isFormValid
 }) => {
   
-  const [errorMessage, setErrorMessage] = useState('');
   const hFor = `${title}-${Math.random()}`;
   
   
   const setValues = useCallback((e) => {
     let value = e.currentTarget.value;
-    setData(value);
+    setData(value, title);
     switch (e.currentTarget.name) {
-      case 'Name':
-        isValidName(value, setErrorMessage);
+      case 'name':
+        isValidName(value, isFormValidCheck, 'name');
         break;
-      case 'Email':
-        isValidEmail(value, setErrorMessage);
+      case 'email':
+        isValidEmail(value, isFormValidCheck, 'email');
         break;
-      case 'Password':
-        isValidPassword(value, setErrorMessage);
+      case 'password':
+        isValidPassword(value, isFormValidCheck, 'password');
         break;
       case 'Date of Birth':
-        isValidDate(value, setErrorMessage);
+        isValidDate(value, isFormValidCheck, 'Date of Birth');
         break;
       case 'Phone number':
-        isValidPhone(value, setErrorMessage);
+        isValidPhone(value, isFormValidCheck, 'Phone number');
         break;
       default:
         break;
     }
   }, [setData]);
   
+
   
   return (
     <Input
@@ -45,9 +46,8 @@ const InputContainer = ({
       typeOfInput={typeOfInput}
       values={values}
       setValue={setValues}
-      errorMessage={errorMessage}
+      errorMessage={isFormValid}
       hFor={hFor}
-      isFormValidCheck={isFormValidCheck}
     />
   );
 };
