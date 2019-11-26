@@ -17,10 +17,13 @@ const FormRegistration = ({
   
   
   const setLocalStorate = () => {
-    if (!dataForm.Name || !dataForm.Email || !dataForm.Password || !dataForm['Date of Birth'] || !dataForm['Phone' +
-    ' number']) {
+    if ((!dataForm.Name || isFormValid[0].Name)
+      || (!dataForm.Email || isFormValid[0].Email)
+      || (!dataForm.Password || isFormValid[0].Password)
+      || (!dataForm['Date of Birth'] || isFormValid[0]['Date of Birth'])
+      || (!dataForm['Phone number'] || isFormValid[0]['Phone number'])) {
         for (let n in isFormValid[0]) {
-        if (!isFormValid[0][n] && !dataForm[n]) {
+        if (!dataForm[n]) {
           isFormValidCheck(`Заполните поле.`, n)
         }
       }
@@ -52,7 +55,8 @@ const FormRegistration = ({
             classes.submit,
             isAccount && classes.complete
           )}
-          disabled={isAccount}>
+          disabled={isAccount}
+         >
           {isAccount ? '✓' : 'Create my account'}
         </button>
       </div>

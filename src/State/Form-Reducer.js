@@ -29,6 +29,7 @@ const formReducer = (state = initialState, action) => {
         })
       };
     case SET_IS_FORM_VALID: {
+      console.log(state.isFormValid);
       return {
         ...state, isFormValid: state.isFormValid.map(n => {
           for (let key in n) {
