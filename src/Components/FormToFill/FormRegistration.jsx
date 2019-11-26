@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './FormRegistration.module.css';
 import InputContainer from './Input/InputContainer';
-import classNames from 'classnames';
+import classnames from 'classnames';
+import {submitHandler} from "../../Utils/submitHandler";
 
 
 const FormRegistration = ({
@@ -13,69 +14,45 @@ const FormRegistration = ({
   isAccount
 }) => {
   
-  const submitHandler = e => {
-    e.preventDefault();
-  };
+  
+  
   const setLocalStorate = () => {
-    if (!dataForm.name || !dataForm.email || !dataForm.password || !dataForm.dateOfBirth || !dataForm.phone) {
-      Object.keys(isFormValid[0]).forEach(n => {
-      if (!isFormValid[0][`${n}`] && !dataForm[`${n}`]) {
-          isFormValidCheck(`Заполните поле.`, `${n}`)
+    if (!dataForm.Name || !dataForm.Email || !dataForm.Password || !dataForm['Date of Birth'] || !dataForm['Phone' +
+    ' number']) {
+        for (let n in isFormValid[0]) {
+        if (!isFormValid[0][n] && !dataForm[n]) {
+          isFormValidCheck(`Заполните поле.`, n)
         }
-      })
+      }
     } else {
       localStorage.setItem('formData', JSON.stringify(dataForm));
       isAccountCreated();
     }
   };
   
-  
+  const type = ['text', 'email', 'password', 'text', 'text'];
+  let InputContainers = Object.keys(dataForm).map((inp, index) => {
+    return <InputContainer
+      key = {index}
+      title={inp}
+      typeOfInput={type[index]}
+      values={dataForm[inp]}
+      setData={setDataFormName}
+      isFormValidCheck={isFormValidCheck}
+      isFormValid={isFormValid[0][inp]}
+    />
+  });
   return (
     <form onSubmit={submitHandler} className={classes.formRegistration}>
-      <InputContainer
-        title='name'
-        typeOfInput="text"
-        values={dataForm.name}
-        setData={setDataFormName}
-        isFormValidCheck={isFormValidCheck}
-        isFormValid={isFormValid[0].name}
-      />
-      <InputContainer
-        title='email'
-        typeOfInput="email"
-        values={dataForm.email}
-        setData={setDataFormName}
-        isFormValidCheck={isFormValidCheck}
-        isFormValid={isFormValid[0].email}
-      />
-      <InputContainer
-        title='password'
-        typeOfInput="password"
-        values={dataForm.password}
-        setData={setDataFormName}
-        isFormValidCheck={isFormValidCheck}
-        isFormValid={isFormValid[0].password}
-      />
-      <InputContainer
-        title='Date of Birth'
-        typeOfInput="text"
-        values={dataForm['Date of Birth']}
-        setData={setDataFormName}
-        isFormValidCheck={isFormValidCheck}
-        isFormValid={isFormValid[0]['Date of Birth']}
-      />
-      <InputContainer
-        title='Phone number'
-        typeOfInput="text"
-        values={dataForm.phone}
-        setData={setDataFormName}
-        isFormValidCheck={isFormValidCheck}
-        isFormValid={isFormValid[0]['Phone number']}
-      />
+      {InputContainers}
       <div className={classes.item}>
         <button
           onClick={setLocalStorate}
-          className={classNames(classes.submit, isAccount && classes.complete)}>
+          className={classnames(
+            classes.submit,
+            isAccount && classes.complete
+          )}
+          disabled={isAccount}>
           {isAccount ? '✓' : 'Create my account'}
         </button>
       </div>

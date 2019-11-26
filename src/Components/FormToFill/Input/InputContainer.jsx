@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useEffect} from 'react';
+import React, { useCallback } from 'react';
 import Input from './Input';
 import {isValidDate, isValidEmail, isValidName, isValidPassword, isValidPhone} from '../../../Utils/validators';
 
@@ -18,14 +18,14 @@ const InputContainer = ({
     let value = e.currentTarget.value;
     setData(value, title);
     switch (e.currentTarget.name) {
-      case 'name':
-        isValidName(value, isFormValidCheck, 'name');
+      case 'Name':
+        isValidName(value, isFormValidCheck, 'Name');
         break;
-      case 'email':
-        isValidEmail(value, isFormValidCheck, 'email');
+      case 'Email':
+        isValidEmail(value, isFormValidCheck, 'Email');
         break;
-      case 'password':
-        isValidPassword(value, isFormValidCheck, 'password');
+      case 'Password':
+        isValidPassword(value, isFormValidCheck, 'Password');
         break;
       case 'Date of Birth':
         isValidDate(value, isFormValidCheck, 'Date of Birth');
@@ -36,7 +36,7 @@ const InputContainer = ({
       default:
         break;
     }
-  }, [setData]);
+  }, [setData, title, isFormValidCheck]);
   
 
   

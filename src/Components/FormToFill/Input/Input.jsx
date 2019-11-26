@@ -1,6 +1,6 @@
-import React  from 'react';
+import React, { memo }  from 'react';
 import classes from '../FormRegistration.module.css';
-import classNames from 'classnames';
+import classnames from 'classnames';
 
 const Input = ({
   title,
@@ -15,7 +15,10 @@ const Input = ({
     <div className={classes.item}>
       <label
         htmlFor={hFor}
-        className={classNames(classes.naming, errorMessage && classes.invalid)}>
+        className={classnames(
+          classes.naming,
+          errorMessage && classes.invalid
+        )}>
         {title}
       </label>
       <input
@@ -32,4 +35,4 @@ const Input = ({
   );
 };
 
-export default React.memo(Input);
+export default memo(Input);

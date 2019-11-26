@@ -3,9 +3,9 @@ export const getStorage = () => {
     return [JSON.parse(localStorage.getItem('formData'))];
   }
   return [{
-    'name': '',
-    'email': '',
-    'password': '',
+    'Name': '',
+    'Email': '',
+    'Password': '',
     'Date of Birth': '',
     'Phone number': ''
   }];

@@ -1,6 +1,6 @@
 export const isValidName = (values, isFormValidCheck, title) => {
   if (!values.length) {
-    isFormValidCheck('Имя не может быть пустым.',  title);
+    isFormValidCheck('Имя не может быть пустым.', title);
   } else {
     (!/^[a-zA-Zа-яА-Я]+$/.test(values))
       ? isFormValidCheck('Имя может содержать только буквы.', title)
@@ -12,7 +12,7 @@ export const isValidEmail = (values, isFormValidCheck, title) => {
   if (!values.length) {
     isFormValidCheck('Email обязателен к заполнению.', title);
   } else {
-    (!/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9])+\.([A-Za-z]{2,4})$/.test(values))
+    (!/^([A-Za-z0-9_\-.])+@([A-Za-z0-9])+\.([A-Za-z]{2,4})$/.test(values))
       ? isFormValidCheck('Некорректный Email.', title)
       : isFormValidCheck('', title);
   }
