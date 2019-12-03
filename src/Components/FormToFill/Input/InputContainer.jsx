@@ -1,22 +1,24 @@
 import React, { useCallback } from 'react';
 import Input from './Input';
 import {isValidDate, isValidEmail, isValidName, isValidPassword, isValidPhone} from '../../../Utils/validators';
+import useAction from "../../../HOOKS/useDispatch";
+import {SET_DATAFORM_NAME} from "../../../Models/ActionConst";
 
 const InputContainer = ({
   title,
   typeOfInput,
   values,
-  setData,
   isFormValidCheck,
   isFormValid
 }) => {
   
   const hFor = `${title}-${Math.random()}`;
+  const setData = useAction(SET_DATAFORM_NAME);
   
   
   const setValues = useCallback((e) => {
-    let value = e.currentTarget.value;
-    setData(value, title);
+    const value = e.currentTarget.value;
+    setData([value, title]);
     switch (e.currentTarget.name) {
       case 'Name':
         isValidName(value, isFormValidCheck, 'Name');
