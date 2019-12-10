@@ -36,3 +36,9 @@ ul {
 button::-moz-focus-inner {
   border: 0 !important;
 }
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+}
