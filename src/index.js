@@ -7,14 +7,12 @@ import FormRegistration from './components/formToFill/FormRegistration';
 import CompletedForm from './components/completedForm/CompletedForm';
 
 
-const App = () => {
-  return (
+const App = () => (
     <div className="App">
       <FormRegistration />
       <CompletedForm />
     </div>
   );
-};
 
 
 ReactDOM.render(

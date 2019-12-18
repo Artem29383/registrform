@@ -14,25 +14,22 @@ import {
   SET_IS_ACCOUNT_CREATED,
   SET_IS_FORM_VALID
 } from '../../models/actions';
+import { isValidFields } from '../../utils/isValidFields';
 
 
 const FormRegistration = () => {
-  const dataForm = useSelectors(getDataFormSelector)[0];
+  const dataForm = useSelectors(getDataFormSelector);
   const isFormValid = useSelectors(getIsFormValidSelector);
   const isFormValidCheck = useAction(SET_IS_FORM_VALID);
   const isAccountCreated = useAction(SET_IS_ACCOUNT_CREATED);
   const isAccount = useSelectors(getIsAccountSelector);
-
-
+  
+  
   const setLocalStorate = () => {
-    if ((!dataForm.Name || isFormValid[0].Name)
-      || (!dataForm.Email || isFormValid[0].Email)
-      || (!dataForm.Password || isFormValid[0].Password)
-      || (!dataForm['Date of Birth'] || isFormValid[0]['Date of Birth'])
-      || (!dataForm['Phone number'] || isFormValid[0]['Phone number'])) {
-        for (let n in isFormValid[0]) {
+    if (isValidFields(dataForm, isFormValid)) {
+      for (let n in isFormValid) {
         if (!dataForm[n]) {
-          isFormValidCheck([`Заполните поле.`, n])
+          isFormValidCheck({ text: `Заполните поле.`, fieldName: n })
         }
       }
     } else {
@@ -42,16 +39,16 @@ const FormRegistration = () => {
   };
   
   const type = ['text', 'email', 'password', 'text', 'text'];
-  const InputContainers = Object.keys(dataForm).map((inp, index) => {
-    return <InputContainer
-      key = {index}
+  const InputContainers = Object.keys(dataForm).map((inp, index) =>
+    <InputContainer
+      key={index}
       title={inp}
       typeOfInput={type[index]}
       values={dataForm[inp]}
       isFormValidCheck={isFormValidCheck}
-      isFormValid={isFormValid[0][inp]}
+      isFormValid={isFormValid[inp]}
     />
-  });
+  );
   
   return (
     <form onSubmit={submitHandler} className={classes.formRegistration}>
@@ -64,7 +61,7 @@ const FormRegistration = () => {
             isAccount && classes.complete
           )}
           disabled={isAccount}
-         >
+        >
           {isAccount ? '✓' : 'Create my account'}
         </button>
       </div>

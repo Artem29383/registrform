@@ -4,36 +4,50 @@ import {
   SET_IS_ACCOUNT_CREATED,
   SET_IS_FORM_VALID
 } from './actions';
+import deepCopy from '../utils/deepCopy';
 
-let initialState = {
+const initialState = {
   dataForm: getStorage(),
-  isFormValid: [{
+  isFormValid: {
     'Name': '',
     'Email': '',
     'Password': '',
     'Date of Birth': '',
     'Phone number': ''
-  }],
+  },
   isAccount: false
 };
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
-    case SET_DATAFORM_NAME:
+    
+    
+    case SET_DATAFORM_NAME: {
+      const isDataFormCopy = deepCopy(state.dataForm);
+      const { text, fieldName } = action.payload;
+      isDataFormCopy[fieldName] = text;
       return {
-        ...state, dataForm: state.dataForm.map(n => {
-          return {...n, [action.payload[1]]: action.payload[0]}
-        })
-      };
-    case SET_IS_FORM_VALID: {
-      return {
-        ...state, isFormValid: state.isFormValid.map(n => {
-          return {...n, [action.payload[1]]: action.payload[0]}
-        })
+        ...state,
+        dataForm: isDataFormCopy
       };
     }
+    
+    
+    case SET_IS_FORM_VALID: {
+      const isFormValidCopy = deepCopy(state.isFormValid);
+      const { text, fieldName } = action.payload;
+      isFormValidCopy[fieldName] = text;
+      return {
+        ...state,
+        isFormValid: isFormValidCopy
+      };
+    }
+    
+    
     case SET_IS_ACCOUNT_CREATED:
-      return {...state, isAccount: true};
+      return { ...state, isAccount: true };
+    
+    
     default:
       return state;
   }

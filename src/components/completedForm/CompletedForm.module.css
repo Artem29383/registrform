@@ -23,11 +23,8 @@
 
 .field {
   color: #b1afad;
-  font-weight: 500;
   margin-left: 10px;
-  width: 100%;
   border: none;
-  outline: none;
   border-bottom: 1px solid #a9aaa6;
 }
 

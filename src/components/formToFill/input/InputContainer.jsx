@@ -21,10 +21,9 @@ const InputContainer = ({
   const hFor = `${title}-${Math.random()}`;
   const setData = useAction(SET_DATAFORM_NAME);
   
-  
   const setValues = useCallback((e) => {
     const value = e.currentTarget.value;
-    setData([value, title]);
+    setData({ text: value, fieldName: title });
     switch (e.currentTarget.name) {
       case 'Name':
         isValidName(value, isFormValidCheck, 'Name');
@@ -46,14 +45,13 @@ const InputContainer = ({
     }
   }, [setData, title, isFormValidCheck]);
   
-
   
   return (
     <Input
       title={title}
       typeOfInput={typeOfInput}
       values={values}
-      setValue={setValues}
+      setValues={setValues}
       errorMessage={isFormValid}
       hFor={hFor}
     />

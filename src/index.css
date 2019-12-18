@@ -9,6 +9,10 @@ body {
   font-size: 14px;
 }
 
+input {
+  outline: 0 !important;
+}
+
 
 *,
 *:before,

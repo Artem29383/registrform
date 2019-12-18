@@ -33,7 +33,6 @@
 }
 
 .field {
-  outline: 0 !important;
   width: 100%;
   display: block;
   height: 40px;
@@ -42,7 +41,6 @@
   background-color: #fafafa;
   color: #000000;
   padding-left: 10px;
-  font-weight: 500;
 }
 
 .errorMessage {

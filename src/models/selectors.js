@@ -1,6 +1,5 @@
 import { createSelector } from 'reselect';
 
-
 const getDataForm = state => {
   return state.formData.dataForm;
 };

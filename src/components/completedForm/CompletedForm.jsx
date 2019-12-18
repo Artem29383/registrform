@@ -5,11 +5,12 @@ import useSelector from '../../hooks/useSelector';
 import { getDataFormSelector } from '../../models/selectors';
 
 const CompletedForm = () => {
-  const dataForm = useSelector(getDataFormSelector)[0];
-  const Naming = ['Name', 'Email', 'Password', 'Date of Birth', 'Phone number'];
-  const inputs = Object.values(dataForm).map((i, index) => {
-    return <CompletedElement key={index} i={i} index={index} Naming={Naming} />
-  });
+  const dataForm = useSelector(getDataFormSelector);
+  const inputs = Object.entries(dataForm).map((dataFormItem, index) =>
+    <CompletedElement
+      key={index}
+      dataFormItem={dataFormItem}
+    />);
   
   return (
     <form className={classes.completedForm}>
