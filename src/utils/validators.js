@@ -28,7 +28,7 @@ export const isValidDate = (values, isFormValidCheck, title) => {
   if (!values.length) {
     isFormValidCheck(['Дата обязательна.', title]);
   } else {
-    (!/^\d\d.\d\d.[\d]{4}$/.test(values))
+    (!/^\d\d-\d\d-[\d]{4}$/.test(values))
       ? isFormValidCheck({ text: 'Введите дату в формате ДД-ММ-ГГГГ.', fieldName: title })
       : isFormValidCheck({ text: '', fieldName: title });
   }
