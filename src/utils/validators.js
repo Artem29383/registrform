@@ -25,17 +25,19 @@ export const isValidPassword = (values, isFormValidCheck, title) => {
 };
 
 export const isValidDate = (values, isFormValidCheck, title) => {
-  if (!values.length) {
-    isFormValidCheck({ text: 'Дата обязательна.', fieldName: title });
-  } else {
-    (!/^\d\d-\d\d-[\d]{4}$/.test(values))
-      ? isFormValidCheck({ text: 'Введите дату в формате ДД-ММ-ГГГГ.', fieldName: title })
-      : isFormValidCheck({ text: '', fieldName: title });
-  }
+  (!/^\d\d-\d\d-[\d]{4}$/.test(values))
+    ? isFormValidCheck({ text: 'Введите дату в формате ДД-ММ-ГГГГ.', fieldName: title })
+    : isFormValidCheck({ text: '', fieldName: title });
 };
 
 export const isValidPhone = (values, isFormValidCheck, title) => {
-  ((!/(^\+7[0-9]{10}$)|(^8[0-9]{10}$)/.test(values)))
-    ? isFormValidCheck({ text: 'Номер телефона начинается с +7 или 8.', fieldName: title })
+  ((!/(\+7\s\([0-9]{3}\)\s[0-9]{3}-[0-9]{2}-[0-9]{2})/.test(values)))
+    ? isFormValidCheck({ text: 'Номер состоит из 10 цифр.', fieldName: title })
     : isFormValidCheck({ text: '', fieldName: title });
+};
+
+export const isValidAge = (values, isFormValidCheck, title) => {
+  (values < 18)
+    ? isFormValidCheck({ text: 'Регистрация с 18 лет.', fieldName: title })
+    : isFormValidCheck({ text: '', fieldName: title })
 };

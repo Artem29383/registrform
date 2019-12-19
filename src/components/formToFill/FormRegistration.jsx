@@ -38,7 +38,7 @@ const FormRegistration = () => {
     }
   };
   
-  const type = ['text', 'email', 'password', 'text', 'text'];
+  const type = ['text', 'email', 'password', 'text', 'text', 'text'];
   const InputContainers = Object.keys(dataForm).map((inp, index) =>
     <InputContainer
       key={index}

@@ -1,6 +1,8 @@
 import React, { memo }  from 'react';
 import classes from '../FormRegistration.module.css';
 import classnames from 'classnames';
+import InputElement from 'react-input-mask';
+
 
 const Input = ({
   title,
@@ -8,7 +10,8 @@ const Input = ({
   values,
   setValues,
   errorMessage,
-  hFor
+  hFor,
+  mask
 }) => (
   <div className={classes.item}>
     <label
@@ -19,14 +22,14 @@ const Input = ({
       )}>
       {title}
     </label>
-    <input
+    <InputElement
       name={title}
       id={hFor}
       className={classes.field}
       type={typeOfInput}
       value={values}
       onChange={setValues}
-      maxLength='40'
+      mask = {mask}
     />
     <span className={classes.errorMessage}>
       {errorMessage}

@@ -13,7 +13,8 @@ const initialState = {
     'Email': '',
     'Password': '',
     'Date of Birth': '',
-    'Phone number': ''
+    'Phone number': '',
+    'Age': ''
   },
   isAccount: false
 };

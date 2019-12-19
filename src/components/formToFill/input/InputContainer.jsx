@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import Input from './Input';
 import {
+  isValidAge,
   isValidDate,
   isValidEmail,
   isValidName,
@@ -15,7 +16,7 @@ const InputContainer = ({
   typeOfInput,
   values,
   isFormValidCheck,
-  isFormValid
+  isFormValid,
 }) => {
   
   const hFor = `${title}-${Math.random()}`;
@@ -40,11 +41,18 @@ const InputContainer = ({
       case 'Phone number':
         isValidPhone(value, isFormValidCheck, 'Phone number');
         break;
+      case 'Age':
+        isValidAge(value, isFormValidCheck, 'Age');
+        break;
       default:
         break;
     }
   }, [setData, title, isFormValidCheck]);
   
+  const masks = {
+    'Date of Birth': "99-99-9999",
+    'Phone number': "+7 (999) 999-99-99"
+  };
   
   return (
     <Input
@@ -54,6 +62,7 @@ const InputContainer = ({
       setValues={setValues}
       errorMessage={isFormValid}
       hFor={hFor}
+      mask = {masks[title]}
     />
   );
 };

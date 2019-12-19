@@ -7,6 +7,7 @@ export const getStorage = () => {
     'Email': '',
     'Password': '',
     'Date of Birth': '',
-    'Phone number': ''
+    'Phone number': '',
+    'Age': ''
   };
 };
