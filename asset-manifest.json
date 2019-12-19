@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/registrform/static/css/main.b28f69c0.chunk.css",
-    "main.js": "/registrform/static/js/main.6c09ad8c.chunk.js",
-    "main.js.map": "/registrform/static/js/main.6c09ad8c.chunk.js.map",
+    "main.js": "/registrform/static/js/main.b0895cb4.chunk.js",
+    "main.js.map": "/registrform/static/js/main.b0895cb4.chunk.js.map",
     "runtime-main.js": "/registrform/static/js/runtime-main.e4f1f960.js",
     "runtime-main.js.map": "/registrform/static/js/runtime-main.e4f1f960.js.map",
-    "static/js/2.17865b32.chunk.js": "/registrform/static/js/2.17865b32.chunk.js",
-    "static/js/2.17865b32.chunk.js.map": "/registrform/static/js/2.17865b32.chunk.js.map",
+    "static/js/2.164575ba.chunk.js": "/registrform/static/js/2.164575ba.chunk.js",
+    "static/js/2.164575ba.chunk.js.map": "/registrform/static/js/2.164575ba.chunk.js.map",
     "index.html": "/registrform/index.html",
-    "precache-manifest.f5d890faefec1bf810ec136fbbd623ae.js": "/registrform/precache-manifest.f5d890faefec1bf810ec136fbbd623ae.js",
+    "precache-manifest.df86934029f8bc582b54d6b20a98493f.js": "/registrform/precache-manifest.df86934029f8bc582b54d6b20a98493f.js",
     "service-worker.js": "/registrform/service-worker.js",
     "static/css/main.b28f69c0.chunk.css.map": "/registrform/static/css/main.b28f69c0.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.e4f1f960.js",
-    "static/js/2.17865b32.chunk.js",
+    "static/js/2.164575ba.chunk.js",
     "static/css/main.b28f69c0.chunk.css",
-    "static/js/main.6c09ad8c.chunk.js"
+    "static/js/main.b0895cb4.chunk.js"
   ]
 }
