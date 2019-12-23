@@ -8,7 +8,7 @@ import deepCopy from '../../utils/deepCopy';
 
 const initialState = {
   dataForm: getStorage(),
-  isFormValid: {
+  formValid: {
     'name': '',
     'email': '',
     'password': '',
@@ -35,12 +35,12 @@ const reducers = (state = initialState, action) => {
     
     
     case SET_IS_FORM_VALID: {
-      const formValidCopy = deepCopy(state.isFormValid);
+      const formValidCopy = deepCopy(state.formValid);
       const { value, fieldName } = action.payload;
       formValidCopy[fieldName] = value;
       return {
         ...state,
-        isFormValid: formValidCopy
+        formValid: formValidCopy
       };
     }
     

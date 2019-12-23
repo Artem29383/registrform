@@ -31,7 +31,6 @@ export const isValidDate = (values, isFormValidCheck, title) => {
 };
 
 export const isValidPhone = (values, isFormValidCheck, title) => {
-  console.log('err');
   ((!/(\+7\s\([0-9]{3}\)\s[0-9]{3}-[0-9]{2}-[0-9]{2})/.test(values)))
     ? isFormValidCheck({ value: 'Номер состоит из 10 цифр.', fieldName: title })
     : isFormValidCheck({ value: '', fieldName: title });

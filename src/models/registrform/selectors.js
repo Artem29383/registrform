@@ -7,7 +7,7 @@ const getDataForm = state => {
 export const getDataFormSelector = createSelector([getDataForm], dataForm => dataForm);
 
 const getIsFormValid = state => {
-  return state.formData.isFormValid;
+  return state.formData.formValid;
 };
 
 export const getIsFormValidSelector = createSelector([getIsFormValid], isFormValid => isFormValid);

@@ -15,7 +15,7 @@ const InputContainer = ({
   title,
   typeOfInput,
   values,
-  isFormValidCheck,
+  formValidCheck,
   formValid,
   name
 }) => {
@@ -28,27 +28,27 @@ const InputContainer = ({
     setData({ value, fieldName: name });
     switch (e.currentTarget.name) {
       case 'Name':
-        isValidName(value, isFormValidCheck, 'name');
+        isValidName(value, formValidCheck, 'name');
         break;
       case 'Email':
-        isValidEmail(value, isFormValidCheck, 'email');
+        isValidEmail(value, formValidCheck, 'email');
         break;
       case 'Password':
-        isValidPassword(value, isFormValidCheck, 'password');
+        isValidPassword(value, formValidCheck, 'password');
         break;
       case 'Date of Birth':
-        isValidDate(value, isFormValidCheck, 'dateOfBirth');
+        isValidDate(value, formValidCheck, 'dateOfBirth');
         break;
       case 'Phone number':
-        isValidPhone(value, isFormValidCheck, 'phoneNumber');
+        isValidPhone(value, formValidCheck, 'phoneNumber');
         break;
       case 'Age':
-        isValidAge(value, isFormValidCheck, 'age');
+        isValidAge(value, formValidCheck, 'age');
         break;
       default:
         break;
     }
-  }, [setData, title, isFormValidCheck]);
+  }, [setData, title, formValidCheck]);
   
   const masks = {
     'dateOfBirth': "99-99-9999",

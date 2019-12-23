@@ -20,8 +20,8 @@ import { isValidFields } from '../../utils/isValidFields';
 const FormRegistration = () => {
   const dataForm = useSelectors(getDataFormSelector);
   const formValid = useSelectors(getIsFormValidSelector);
-  const isFormValidCheck = useAction(SET_IS_FORM_VALID);
-  const isAccountCreated = useAction(SET_IS_ACCOUNT_CREATED);
+  const formValidCheck = useAction(SET_IS_FORM_VALID);
+  const accountCreated = useAction(SET_IS_ACCOUNT_CREATED);
   const isAccount = useSelectors(getIsAccountSelector);
   
   
@@ -29,12 +29,12 @@ const FormRegistration = () => {
     if (isValidFields(dataForm, formValid)) {
       for (let n in formValid) {
         if (!dataForm[n]) {
-          isFormValidCheck({ value: `Заполните поле.`, fieldName: n })
+          formValidCheck({ value: `Заполните поле.`, fieldName: n })
         }
       }
     } else {
       localStorage.setItem('formData', JSON.stringify(dataForm));
-      isAccountCreated();
+      accountCreated();
     }
   };
   
@@ -46,7 +46,7 @@ const FormRegistration = () => {
       title={fields[index]}
       typeOfInput={type[index]}
       values={dataForm[inp]}
-      isFormValidCheck={isFormValidCheck}
+      formValidCheck={formValidCheck}
       formValid={formValid[inp]}
       name = {inp}
     />
