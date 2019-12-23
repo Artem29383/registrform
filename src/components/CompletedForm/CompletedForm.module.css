@@ -1,0 +1,31 @@
+.completedForm {
+  width: 354px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  padding: 20px;
+}
+
+.item:not(:first-child) {
+  padding-top: 0;
+}
+
+.naming {
+  margin-bottom: 5px;
+  color: #929490;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.field {
+  color: #b1afad;
+  margin-left: 10px;
+  border: none;
+  border-bottom: 1px solid #a9aaa6;
+}
+
+

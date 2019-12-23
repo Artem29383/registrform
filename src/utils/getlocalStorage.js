@@ -3,11 +3,11 @@ export const getStorage = () => {
     return JSON.parse(localStorage.getItem('formData'));
   }
   return {
-    'Name': '',
-    'Email': '',
-    'Password': '',
-    'Date of Birth': '',
-    'Phone number': '',
-    'Age': ''
+    'name': '',
+    'email': '',
+    'password': '',
+    'dateOfBirth': '',
+    'phoneNumber': '',
+    'age': ''
   };
 };

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import store from './state/store';
 import { Provider } from 'react-redux';
-import FormRegistration from './components/formToFill/FormRegistration';
-import CompletedForm from './components/completedForm/CompletedForm';
+import FormRegistration from './components/FormRegistration';
+import CompletedForm from './components/CompletedForm';
 
 
 const App = () => (

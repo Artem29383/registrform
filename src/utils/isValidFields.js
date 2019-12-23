@@ -1,6 +1,6 @@
-export const isValidFields = (dataForm, isFormValid) => {
+export const isValidFields = (dataForm, formValid) => {
   for (let key in dataForm) {
-    if (!dataForm[key] || isFormValid[key]) {
+    if (!dataForm[key] || formValid[key]) {
       return true;
     }
   }
