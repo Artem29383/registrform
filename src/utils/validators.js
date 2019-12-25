@@ -1,43 +1,43 @@
-export const isValidName = (values, isFormValidCheck, title) => {
+export const isValidName = (values, isFormValidCheck, id) => {
   if (!values.length) {
-    isFormValidCheck({ value: 'Имя не может быть пустым.', fieldName: title });
+    isFormValidCheck({ errorText: 'Имя не может быть пустым.', id, isValid: false});
   } else {
     (!/^[a-zA-Zа-яА-Я]+$/.test(values))
-      ? isFormValidCheck({ value: 'Имя может содержать только буквы.', fieldName: title })
-      : isFormValidCheck({ value: '', fieldName: title });
+      ? isFormValidCheck({ errorText: 'Имя может содержать только буквы.', id, isValid: false})
+      : isFormValidCheck({ errorText: '', id, isValid: true });
   }
 };
 
-export const isValidEmail = (values, isFormValidCheck, title) => {
+export const isValidEmail = (values, isFormValidCheck, id) => {
   if (!values.length) {
-    isFormValidCheck({ value: 'Email обязателен к заполнению.', fieldName: title });
+    isFormValidCheck({ errorText: 'Email обязателен к заполнению.', id, isValid: false });
   } else {
     (!/^([A-Za-z0-9_\-.])+@([A-Za-z0-9])+\.([A-Za-z]{2,4})$/.test(values))
-      ? isFormValidCheck({ value: 'Некорректный Email.', fieldName: title })
-      : isFormValidCheck({ value: '', fieldName: title });
+      ? isFormValidCheck({ errorText: 'Некорректный Email.', id, isValid: false})
+      : isFormValidCheck({ errorText: '', id,isValid: true });
   }
 };
 
-export const isValidPassword = (values, isFormValidCheck, title) => {
+export const isValidPassword = (values, isFormValidCheck, id) => {
   (values.length < 6)
-    ? isFormValidCheck({ value: 'Пароль слишком короткий.', fieldName: title })
-    : isFormValidCheck({ value: '', fieldName: title });
+    ? isFormValidCheck({ errorText: 'Пароль слишком короткий.', id, isValid: false })
+    : isFormValidCheck({ errorText: '', id, isValid: true });
 };
 
-export const isValidDate = (values, isFormValidCheck, title) => {
+export const isValidDate = (values, isFormValidCheck, id) => {
   (!/^\d\d-\d\d-[\d]{4}$/.test(values))
-    ? isFormValidCheck({ value: 'Введите дату в формате ДД-ММ-ГГГГ.', fieldName: title })
-    : isFormValidCheck({ value: '', fieldName: title });
+    ? isFormValidCheck({ errorText: 'Введите дату в формате ДД-ММ-ГГГГ.', id, isValid: false })
+    : isFormValidCheck({ errorText: '', id, isValid: true });
 };
 
-export const isValidPhone = (values, isFormValidCheck, title) => {
+export const isValidPhone = (values, isFormValidCheck, id) => {
   ((!/(\+7\s\([0-9]{3}\)\s[0-9]{3}-[0-9]{2}-[0-9]{2})/.test(values)))
-    ? isFormValidCheck({ value: 'Номер состоит из 10 цифр.', fieldName: title })
-    : isFormValidCheck({ value: '', fieldName: title });
+    ? isFormValidCheck({ errorText: 'Номер состоит из 10 цифр.', id, isValid: false })
+    : isFormValidCheck({ errorText: '', id, isValid: true });
 };
 
-export const isValidAge = (values, isFormValidCheck, title) => {
+export const isValidAge = (values, isFormValidCheck, id) => {
   (values < 18)
-    ? isFormValidCheck({ value: 'Регистрация с 18 лет.', fieldName: title })
-    : isFormValidCheck({ value: '', fieldName: title })
+    ? isFormValidCheck({ errorText: 'Регистрация с 18 лет.', id, isValid: false })
+    : isFormValidCheck({ errorText: '', id, isValid: true })
 };

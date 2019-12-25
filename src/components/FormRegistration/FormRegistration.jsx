@@ -5,9 +5,9 @@ import classnames from 'classnames';
 import { submitHandler } from '../../utils/submitHandler';
 import useSelectors from '../../hooks/useSelector';
 import {
+  getDataFormIdSelector,
   getDataFormSelector,
   getIsAccountSelector,
-  getIsFormValidSelector
 } from '../../models/registrform/selectors';
 import useAction from '../../hooks/useAction';
 import {
@@ -19,36 +19,36 @@ import { isValidFields } from '../../utils/isValidFields';
 
 const FormRegistration = () => {
   const dataForm = useSelectors(getDataFormSelector);
-  const formValid = useSelectors(getIsFormValidSelector);
+  const dataFormIds = useSelectors(getDataFormIdSelector);
   const formValidCheck = useAction(SET_IS_FORM_VALID);
   const accountCreated = useAction(SET_IS_ACCOUNT_CREATED);
   const isAccount = useSelectors(getIsAccountSelector);
   
   
   const setLocalStorate = () => {
-    if (isValidFields(dataForm, formValid)) {
-      for (let n in formValid) {
-        if (!dataForm[n]) {
-          formValidCheck({ value: `Заполните поле.`, fieldName: n })
+    if (!isValidFields(dataForm, dataFormIds)) {
+      dataFormIds.forEach(id => {
+        if (!dataForm[id].isValid && !dataForm[id].values.trim()) {
+          formValidCheck({ errorText: 'Заполните поле', id, isValid: false })
         }
-      }
+      })
     } else {
       localStorage.setItem('formData', JSON.stringify(dataForm));
       accountCreated();
     }
   };
   
-  const type = ['text', 'email', 'password', 'text', 'text', 'number'];
-  const fields = ['Name', 'Email', 'Password', 'Date of Birth', 'Phone number', 'Age'];
-  const InputContainers = Object.keys(dataForm).map((inp, index) =>
+  
+  const InputContainers = dataFormIds.map(id =>
     <InputContainer
-      key={index}
-      title={fields[index]}
-      typeOfInput={type[index]}
-      values={dataForm[inp]}
+      key={id}
+      title={dataForm[id].title}
+      typeOfInput={dataForm[id].type}
+      values={dataForm[id].values}
       formValidCheck={formValidCheck}
-      formValid={formValid[inp]}
-      name = {inp}
+      name={dataForm[id].name}
+      id={id}
+      errorMessage={dataForm[id].errorText}
     />
   );
   

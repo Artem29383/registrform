@@ -5,28 +5,36 @@ import {
   SET_IS_FORM_VALID
 } from './actions';
 import deepCopy from '../../utils/deepCopy';
+import {
+  normalize,
+  schema
+} from 'normalizr';
 
-const initialState = {
+let initialState = {
   dataForm: getStorage(),
-  formValid: {
-    'name': '',
-    'email': '',
-    'password': '',
-    'dateOfBirth': '',
-    'phoneNumber': '',
-    'age': ''
-  },
   isAccount: false
+};
+
+const dataFormScheme = new schema.Entity('dataForm');
+const dataForms = { dataForm: [dataFormScheme] };
+const dataNormalized = normalize(initialState, dataForms);
+
+
+initialState = {
+  dataForm: {
+    entities: dataNormalized.entities.dataForm || {},
+    ids: dataNormalized.result.dataForm || {}
+  }
 };
 
 const reducers = (state = initialState, action) => {
   switch (action.type) {
     
-    
     case SET_DATAFORM_NAME: {
       const dataFormCopy = deepCopy(state.dataForm);
-      const { value, fieldName } = action.payload;
-      dataFormCopy[fieldName] = value;
+      const { id, values } = action.payload;
+      dataFormCopy.entities[id] = { ...state.dataForm.entities[id], values };
+      dataFormCopy.ids = [...state.dataForm.ids];
       return {
         ...state,
         dataForm: dataFormCopy
@@ -35,12 +43,13 @@ const reducers = (state = initialState, action) => {
     
     
     case SET_IS_FORM_VALID: {
-      const formValidCopy = deepCopy(state.formValid);
-      const { value, fieldName } = action.payload;
-      formValidCopy[fieldName] = value;
+      const dataFormCopy = deepCopy(state.dataForm);
+      const { id, errorText, isValid } = action.payload;
+      dataFormCopy.entities[id] = { ...state.dataForm.entities[id], errorText, isValid };
+      dataFormCopy.ids = [...state.dataForm.ids];
       return {
         ...state,
-        formValid: formValidCopy
+        dataForm: dataFormCopy
       };
     }
     

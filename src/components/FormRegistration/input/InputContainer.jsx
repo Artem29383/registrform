@@ -16,34 +16,34 @@ const InputContainer = ({
   typeOfInput,
   values,
   formValidCheck,
-  formValid,
-  name
+  name,
+  id,
+  errorMessage
 }) => {
-  
   const hFor = `${title}-${Math.random()}`;
   const setData = useAction(SET_DATAFORM_NAME);
   
   const setValues = useCallback((e) => {
-    const value = e.currentTarget.value;
-    setData({ value, fieldName: name });
+    const values = e.currentTarget.value;
+    setData({ id, values });
     switch (e.currentTarget.name) {
       case 'Name':
-        isValidName(value, formValidCheck, 'name');
+        isValidName(values, formValidCheck, id);
         break;
       case 'Email':
-        isValidEmail(value, formValidCheck, 'email');
+        isValidEmail(values, formValidCheck, id);
         break;
       case 'Password':
-        isValidPassword(value, formValidCheck, 'password');
+        isValidPassword(values, formValidCheck, id);
         break;
       case 'Date of Birth':
-        isValidDate(value, formValidCheck, 'dateOfBirth');
+        isValidDate(values, formValidCheck, id);
         break;
       case 'Phone number':
-        isValidPhone(value, formValidCheck, 'phoneNumber');
+        isValidPhone(values, formValidCheck, id);
         break;
       case 'Age':
-        isValidAge(value, formValidCheck, 'age');
+        isValidAge(values, formValidCheck, id);
         break;
       default:
         break;
@@ -60,7 +60,7 @@ const InputContainer = ({
       typeOfInput={typeOfInput}
       values={values}
       setValues={setValues}
-      errorMessage={formValid}
+      errorMessage={errorMessage}
       hFor={hFor}
       mask = {masks[name]}
     />

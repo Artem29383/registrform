@@ -1,10 +1,17 @@
 import { createSelector } from 'reselect';
 
 const getDataForm = state => {
-  return state.formData.dataForm;
+  return state.formData.dataForm.entities;
 };
 
 export const getDataFormSelector = createSelector([getDataForm], dataForm => dataForm);
+
+const getDataFormId = state => {
+  return state.formData.dataForm.ids;
+};
+
+export const getDataFormIdSelector = createSelector([getDataFormId], id => id);
+
 
 const getIsFormValid = state => {
   return state.formData.formValid;
