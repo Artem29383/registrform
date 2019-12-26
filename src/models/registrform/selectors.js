@@ -13,12 +13,6 @@ const getDataFormId = state => {
 export const getDataFormIdSelector = createSelector([getDataFormId], id => id);
 
 
-const getIsFormValid = state => {
-  return state.formData.formValid;
-};
-
-export const getIsFormValidSelector = createSelector([getIsFormValid], isFormValid => isFormValid);
-
 const getIsAccount = state => {
   return state.formData.isAccount;
 };
