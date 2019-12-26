@@ -31,7 +31,7 @@ const FormRegistration = () => {
         if (!dataForm[id].isValid && !dataForm[id].values.trim()) {
           formValidCheck({ errorText: 'Заполните поле', id, isValid: false })
         }
-      })
+      });
     } else {
       localStorage.setItem('formData', JSON.stringify(dataForm));
       accountCreated();

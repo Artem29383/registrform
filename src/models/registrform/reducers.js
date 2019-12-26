@@ -10,21 +10,17 @@ import {
   schema
 } from 'normalizr';
 
-let initialState = {
-  dataForm: getStorage(),
-  isAccount: false
-};
 
 const dataFormScheme = new schema.Entity('dataForm');
 const dataForms = { dataForm: [dataFormScheme] };
-const dataNormalized = normalize(initialState, dataForms);
+const dataNormalized = normalize(getStorage(), dataForms);
 
-
-initialState = {
+const initialState = {
   dataForm: {
-    entities: dataNormalized.entities.dataForm || {},
-    ids: dataNormalized.result.dataForm || {}
-  }
+    entities: dataNormalized.entities.dataForm,
+    ids: dataNormalized.result.dataForm
+  },
+  isAccount: false
 };
 
 const reducers = (state = initialState, action) => {

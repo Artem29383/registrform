@@ -1,9 +1,8 @@
-
 export const getStorage = () => {
   if (localStorage.getItem('formData')) {
-    return JSON.parse(localStorage.getItem('formData'));
+    return {dataForm: JSON.parse(localStorage.getItem('formData'))}
   }
-  return [{
+  return {dataForm: [{
     id: 1,
     name: 'name',
     type: 'text',
@@ -56,5 +55,5 @@ export const getStorage = () => {
       isValid: false,
       errorText: '',
       values: ''
-    }]
+    }]}
 };
