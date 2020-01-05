@@ -48,7 +48,7 @@ const InputContainer = ({
       default:
         break;
     }
-  }, [setData, title, formValidCheck]);
+  }, [setData, formValidCheck, id]);
   
   const masks = {
     'dateOfBirth': "99-99-9999",

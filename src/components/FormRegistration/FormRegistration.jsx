@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './FormRegistration.module.css';
 import InputContainer from './input/InputContainer';
 import classnames from 'classnames';
-import { submitHandler } from '../../utils/submitHandler';
 import useSelectors from '../../hooks/useSelector';
 import {
   getDataFormIdSelector,
@@ -23,9 +22,8 @@ const FormRegistration = () => {
   const formValidCheck = useAction(SET_IS_FORM_VALID);
   const accountCreated = useAction(SET_IS_ACCOUNT_CREATED);
   const isAccount = useSelectors(getIsAccountSelector);
-  
-  
-  const setLocalStorate = () => {
+  const submitHandler = (e) => {
+    e.preventDefault();
     if (!isValidFields(dataForm, dataFormIds)) {
       dataFormIds.forEach(id => {
         if (!dataForm[id].isValid && !dataForm[id].values.trim()) {
@@ -37,6 +35,11 @@ const FormRegistration = () => {
       accountCreated();
     }
   };
+  
+  
+  useEffect(() => {
+    localStorage.setItem('formData', JSON.stringify(dataForm));
+  }, [dataForm]);
   
   
   const InputContainers = dataFormIds.map(id =>
@@ -57,7 +60,6 @@ const FormRegistration = () => {
       {InputContainers}
       <div className={classes.item}>
         <button
-          onClick={setLocalStorate}
           className={classnames(
             classes.submit,
             isAccount && classes.complete
