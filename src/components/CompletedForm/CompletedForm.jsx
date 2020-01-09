@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './CompletedForm.module.css';
-import CompletedElement from './CompletedElement';
+import CompletedElement from '../CompletedElement';
 import useSelectors from '../../hooks/useSelector';
 import {
   getDataFormIdSelector,
